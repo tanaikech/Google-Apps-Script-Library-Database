@@ -19,6 +19,12 @@ In the current stage, this is a sample database, yet. I would like to close to a
 
 When this became one of materials for leading the direction for achieving the Google Apps Script Library Database, I'm glad.
 
+# Search application
+
+- **You can search the GAS libraries using this database at [Search Google Apps Script Libraries](https://sites.google.com/view/search-gas-libraries).**
+
+  - I thought that when GitHub repository is used as the database and the GAS libraries are searched by HTML and Javascript, it might be useful.
+
 # Future developments
 
 In the current stage, a file including JSON objects of GAS libraries is put in this repository. The GAS library is searched using this file as the database.
