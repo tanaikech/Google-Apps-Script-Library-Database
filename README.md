@@ -27,9 +27,9 @@ When this became one of materials for leading the direction for achieving the Go
 
 # Future developments
 
-In the current stage, a file including JSON objects of GAS libraries is put in this repository. The GAS library is searched using this file as the database.
+- In the current stage, a file including JSON objects of GAS libraries is put in this repository. The GAS library is searched using this file as the database. When the structure of JSON object for GAS library and the format of the file are decided, I would like to increase the number of data.
 
-When the structure of JSON object for GAS library and the format of the file are decided, I would like to increase the number of data.
+- At the current search application, the library is searched. As the next step, I would like to think of the installer of the searched library to Google Apps Script project. For this, I hope for being added Google Apps Script API to Advanced Google services.
 
 # Licence
 
