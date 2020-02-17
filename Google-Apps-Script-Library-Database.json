@@ -1,0 +1,363 @@
+[
+  {
+    "libraryName": "BatchRequest",
+    "description": "This is a library for running Batch Requests using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/BatchRequest",
+    "publishedDate": 1525243965,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools"
+    ],
+    "projectKey": "1HLv6tWz0oXFOJHerBTP8HsNmhpRqssijJatC92bv9Ym6HSN69_UuzcDk"
+  },
+  {
+    "libraryName": "FilesApp",
+    "description": "FilesApp is a GAS library for retrieving file and folder list in Google Drive using Google Apps Script (GAS). Also this can create a tree from all files and folders in Google Drive.",
+    "siteUrl": "https://github.com/tanaikech/FilesApp",
+    "publishedDate": 1529025576,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "developer-tools",
+      "gas-library",
+      "file-tree"
+    ],
+    "projectKey": "1dBxqh6gpWqFv4h0M25ALp4bhcs6CoqhiIJ0fUeUjR57bAxIN2PqfkQns"
+  },
+  {
+    "libraryName": "ImgApp",
+    "description": "This is a library of image tools for Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/ImgApp",
+    "publishedDate": 1498547968,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "developer-tools",
+      "gas-library",
+      "coffeescript"
+    ],
+    "projectKey": "1T03nYHRho6XMWYcaumClcWr6ble65mAT8OLJqRFJ5lukPVogAN2NDl-y"
+  },
+  {
+    "libraryName": "ManifestsApp",
+    "description": "This is a Manifests library for Google Apps Scripts.",
+    "siteUrl": "https://github.com/tanaikech/ManifestsApp",
+    "publishedDate": 1510191360,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools",
+      "manifests"
+    ],
+    "projectKey": "1g0_wywpigtU_xA01D5IrRuBuDD5unieYl7nVXQR8DM_An0eUnB0NcTcx"
+  },
+  {
+    "libraryName": "ProjectApp",
+    "description": "This is a project library for Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/ProjectApp",
+    "publishedDate": 1510107186,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools"
+    ],
+    "projectKey": "1l_XfWeEKp-g45lI-ikQ1KFrHX9YWlR2rWpaVMVs8miaa3J6PUYQqDo5C"
+  },
+  {
+    "libraryName": "ProjectApp2",
+    "description": "This is a GAS project library for Google Apps Script (GAS). This library can be used for the projects of both standalone script type and container-bound script type.",
+    "siteUrl": "https://github.com/tanaikech/ProjectApp2",
+    "publishedDate": 1517194196,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools"
+    ],
+    "projectKey": "11qqgrTfCEydqwIF8RRrSZOrdq-KNsIDnUpnYefX5KobaMMArVSlXUqwS"
+  },
+  {
+    "libraryName": "OnedriveApp",
+    "description": "This is a library of Google Apps Script for using Microsoft OneDrive.",
+    "siteUrl": "https://github.com/tanaikech/OnedriveApp",
+    "publishedDate": 1502846660,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "onedrive-api",
+      "onedrive-client"
+    ],
+    "projectKey": "1wfoCE1mCQpGQZZ9CrWFY_NvA9iRxkNbxN_qTGSBkRkmn8I2eguLVwfZs"
+  },
+  {
+    "libraryName": "RunAll",
+    "description": "This is a library for running the concurrent processing using only native Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/RunAll",
+    "publishedDate": 1524526481,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools",
+      "concurrent-processes",
+      "asynchronous"
+    ],
+    "projectKey": "1FWYhQFhL7UIAZJn-FR3TlcHvXwHPJc2HwI4vtmNUAQv2OybGe-S97Lal"
+  },
+  {
+    "libraryName": "SOUWA_GAS",
+    "description": "GAS library for summing string elements in an array at the high speed",
+    "siteUrl": "https://github.com/tanaikech/SOUWA_GAS",
+    "publishedDate": 1476404481,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "algorithm",
+      "array-manipulations",
+      "gas-library"
+    ],
+    "projectKey": "1yI93fL6G-jJwdYLCXSnbOkluQntDWo6QLARB6dMqObcJd-BYBd6wyasz"
+  },
+  {
+    "libraryName": "ZipFolder",
+    "description": "This is a library for zipping a folder using Google Apps Scripts.",
+    "siteUrl": "https://github.com/tanaikech/ZipFolder",
+    "publishedDate": 1510469353,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools"
+    ],
+    "projectKey": "1q5FY5UxNpFNYxtd-LZgIjchicKq1BfDCVPbOwA0BDiL6zfCTxjfe-Puz"
+  },
+  {
+    "libraryName": "RangeListApp",
+    "description": "RangeListApp is a GAS library for retrieving, putting and replacing values for Spreadsheet by a range list with a1Notation using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/RangeListApp",
+    "publishedDate": 1532667376,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "google-spreadsheet",
+      "spreadsheet",
+      "gas-library",
+      "library",
+      "developer-tools"
+    ],
+    "projectKey": "1L44xvi-AsdwbYgqeb63e2i-7PpC01Mt-1fgNO2HpTTvAHPMU1HteAIsY"
+  },
+  {
+    "libraryName": "DownloadLargeFilesByUrl",
+    "description": "DownloadLargeFilesByUrl is a GAS library for downloading large files from URL to Google Drive using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/DownloadLargeFilesByUrl",
+    "publishedDate": 1535853811,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas",
+      "gas-library",
+      "library",
+      "developer-tools"
+    ],
+    "projectKey": "1PTlzn6VNux5MlnkT5zsb4T-UDLINCLFvK5Uvb0M4gstAt3P9eBHWxMCu"
+  },
+  {
+    "libraryName": "ArrangeStackingOrder",
+    "description": "ArrangeStackingOrder is a GAS library for arranging the stacking order of page elements on Google Slides using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/ArrangeStackingOrder",
+    "publishedDate": 1539129475,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "developer-tools",
+      "google-slides"
+    ],
+    "projectKey": "1YJkHduBJjk7eDbwWCp20YGSjHZsELb4F_q2Fmxs7zgZclZULI84Yjm0f"
+  },
+  {
+    "libraryName": "ProcessApp",
+    "description": "This is a library for retrieving the process and information of Google Apps Script. For example, one of methods retrieves the total execution time of all functions executed by the time-driven trigger at owner's account.",
+    "siteUrl": "https://github.com/tanaikech/ProcessApp",
+    "publishedDate": 1549696239,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools"
+    ],
+    "projectKey": "1y3BjeYyJUdI9U2JZ97POIXRTaYnjsbH6SUapd43s8S8vh2Io5pho6xZ6"
+  },
+  {
+    "libraryName": "GistChecker",
+    "description": "This is a GAS library for notifying the change of number of comments, stars and forks of own Gists as an email using Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/GistChecker",
+    "publishedDate": 1554081939,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools",
+      "github-api",
+      "gist",
+      "gists"
+    ],
+    "projectKey": "1O3lRMPvnjQKWxbXyJcnIGgEiienECajdlfi8dqgR6Kf45A-Wa4wiMpb9"
+  },
+  {
+    "libraryName": "FetchApp",
+    "description": "This is a GAS library for creating and requesting the type of multipart/form-data using Google Apps Script. This library enhances Class UelFetchApp of Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/FetchApp",
+    "publishedDate": 1555725685,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "developer-tools",
+      "fetch",
+      "multipart-formdata"
+    ],
+    "projectKey": "1sm9V-w8-0i3U4-10N6XyaRjHk5voiuJ1ArKSLo3htOUasB6GcPcIq8Kb"
+  },
+  {
+    "libraryName": "GetEditType",
+    "description": "GetEditType is a GAS library for retrieving the edit types of the OnEdit event trigger of Spreadsheet using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/GetEditType",
+    "publishedDate": 1560151001,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "developer-tools",
+      "spreadsheet",
+      "google-spreadsheet",
+      "trigger"
+    ],
+    "projectKey": "13DgweRAOSLMaRiAVcOIYAwoUmsAIrRW_DcfKchwaHJrLP3H-MdcENzZr"
+  },
+  {
+    "libraryName": "UnzipGs",
+    "description": "This is a GAS library for unzipping a Zip file protected by a password using Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/UnzipGs",
+    "publishedDate": 1564115943,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "unzip"
+    ],
+    "projectKey": "1yeBx1bM_6T-Tt2S3e-wxSgphR2QdhM7r0YRYAUTXzDkbRIrvJdHNZT0R"
+  },
+  {
+    "libraryName": "GmailToList",
+    "description": "This is a library for exporting all messages of Gmail as a list using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/GmailToList",
+    "publishedDate": 1576479482,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "gmail",
+      "gmail-api",
+      "backup"
+    ],
+    "projectKey": "1ZZfjzKy37lzld3fIB9N3EQ3I1A6Mixz2MWqpu5f3YoiHUMAdCX0lEMYh"
+  },
+  {
+    "libraryName": "EncodeApp",
+    "description": "EncodeApp is a GAS library for retrieving the encoding set (charset) and doing URL encode with the specific encoding set using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/EncodeApp",
+    "publishedDate": 1579851888,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools",
+      "url-encoding",
+      "charset"
+    ],
+    "projectKey": "1DsJdRQ9D6nXgbxVVvOroM3EYJOcB197Isvt2Sl4sziW3m9IqqeB9YoWy"
+  },
+  {
+    "libraryName": "DateFinder",
+    "description": "DateFinder is a GAS library for searching the date objects from the cell range on the sheet in the Spreadsheet and retrieving the searched range as the RangeList object using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/DateFinder",
+    "publishedDate": 1580358901,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer",
+      "google-spreadsheet",
+      "search"
+    ],
+    "projectKey": "17ghJiHk43mDeFqYYQRc7YMfTRv9hMNk0dkJ2rudZmJUMaopR0gvS9B01"
+  }
+]
