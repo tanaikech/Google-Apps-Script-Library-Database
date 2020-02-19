@@ -359,5 +359,23 @@
       "search"
     ],
     "projectKey": "17ghJiHk43mDeFqYYQRc7YMfTRv9hMNk0dkJ2rudZmJUMaopR0gvS9B01"
+  },
+  {
+    "libraryName": "RichTextApp",
+    "description": "This is a GAS library for copying the rich text with the text styles from Google Document to Google Spreadsheet or from Google Spreadsheet to Google Document using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/RichTextApp",
+    "publishedDate": 1582088425,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools",
+      "google-spreadsheet",
+      "rich-text"
+    ],
+    "projectKey": "1Ka6RcIG6G9P8AhkJtjy1DAnHk1_rShFPWtdCQ2bxwMsrRE8cfn0cDXBv"
   }
 ]
