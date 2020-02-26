@@ -377,5 +377,23 @@
       "rich-text"
     ],
     "projectKey": "1Ka6RcIG6G9P8AhkJtjy1DAnHk1_rShFPWtdCQ2bxwMsrRE8cfn0cDXBv"
+  },
+  {
+    "libraryName": "GPhotoApp",
+    "description": "This is a GAS library for retrieving and creating the albums and media items using Google Photo API using Google Apps Script (GAS).",
+    "siteUrl": "https://github.com/tanaikech/GPhotoApp",
+    "publishedDate": 1582676588,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "library",
+      "gas-library",
+      "developer-tools",
+      "google-photos",
+      "google-photos-api"
+    ],
+    "projectKey": "1lGrUiaweQjQwVV_QwWuJDJVbCuY2T0BfVphw6VmT85s9LJFntav1wzs9"
   }
 ]
