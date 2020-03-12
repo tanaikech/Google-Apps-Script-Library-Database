@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<!-- 
+This is a web application for searching Google Apps Script Libraries. This can be run with the standalone.
+
+20200312: v1.0.0 - Initial release.
+-->
+  
+  <base target="_top">
+  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.1.0/papaparse.min.js"></script>
+  <style>
+    form {
+    border-radius:10px;
+    border:1px solid #cccccc;
+    margin: 0px;
+    padding: 10px;
+    }
+    
+    .title {
+      font-size: 3vmin;
+    }
+  </style>
+</head>
+<body>
+  <form class="form-group" id="form">
+    <p class="title"><b>Search Google Apps Script Libraries v1.0.0</b> <span id="items"></span></p>
+    <p>Author: <a href="https://tanaikech.github.io/" target="_blank">Tanaike</a></p>
+    <p>Input text for searching : <input type="text" id="searchtext" name="searchtext" size="50" placeholder="Please input search text for searching GAS libraries."> </p>
+    <p>Searching the specific properties with the inputted text : <input type="checkbox" name="props" value="libraryName" id="check1">Library name <input type="checkbox" name="props" value="description" id="check2">Description <input type="checkbox" name="props" value="authors" id="check3">Authors <input type="checkbox" name="props" value="tags" id="check4">Tags <input type="checkbox" name="propall" value="all" id="allcheck">All </p> <input type="button" id="gosearch" class="action" value="loading..." onclick="search(this.parentNode)" disabled>
+    <p>- In the current stage, the library data is retrieved from 2 databases by <a href="https://github.com/tanaikech/Google-Apps-Script-Library-Database" target="_blank">Tanaike</a> and <a href="https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/edit#gid=0" target="_blank">Andrew Roberts</a>.</p>
+    <p>- When you push "search" button without the search text, all libraries are shown.</p>
+    <p>- When you can add new GAS libraries to this database, please add them using <a href="https://docs.google.com/forms/d/e/1FAIpQLSckRzFtF-i1CUwdhA21GteWok9p5-_G4Py3PH5bC9KaqXoOxA/viewform">this Google Form</a> by Andrew Roberts.</p>
+  </form>
+  <div id="result"></div>
+  <script>
+    let data;
+    const databaseUrls1 = "https://raw.githubusercontent.com/tanaikech/Google-Apps-Script-Library-Database/master/Google-Apps-Script-Library-Database.json";
+    const databaseUrls2 = "https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/gviz/tq?tqx=out:csv&gid=1640515458";
+    
+    Promise.resolve()
+      .then(() => {
+        return new Promise((resolve, reject) => {
+          fetch(databaseUrls1)
+          .then(res => res.json())
+          .then(obj => resolve(obj))
+          .catch(err => reject(err));
+        });
+      })
+      .then(object => {
+        return new Promise((resolve, reject) => {
+          fetch(databaseUrls2)
+          .then(res => res.text())
+          .then(csv => {
+            const dataFromANDREWROBERTSList = fromANDREWROBERTSList(csv, object);
+            if (dataFromANDREWROBERTSList) {
+              resolve(dataFromANDREWROBERTSList);
+              return;
+            }
+            resolve(object);
+          })
+          .catch(err => {
+            console.log(err);
+            resolve(object);
+          });
+        });
+      })
+      .then(object => {
+        data = object;
+        document.getElementById('items').innerHTML = "(Now " + data.length + " libraries in Database)";
+        document.getElementById('gosearch').value = "search";
+        document.getElementById('gosearch').disabled = false;
+      })
+      .catch(err => console.log(err));
+    
+    function fromANDREWROBERTSList(csv, object) {
+      const parsedCsv = Papa.parse(csv);
+      if (parsedCsv.errors.length > 0) {
+        return null;
+      }
+      const ar = parsedCsv.data;
+      ar.shift();
+      const objAr = ar.reduce((o, [name,description,projectKey,moreinf,,gitHub,created,,,,authors,tags]) => {      
+          let createdTime = "";
+          if (created) {
+            if (/^\d{2}\/\d{2}\/\d{4}$/.test(created)) {
+              const [day, month, year] = created.split("/");
+              createdTime = new Date(year, month, day, "00", "00", "00").getTime() / 1000;
+            } else if (/^\d{10}$/.test(created)) {
+              createdTime = Number(created);
+            }
+          }
+          o.push({
+            libraryName: name,
+            description: description,
+            siteUrl: gitHub || moreinf,
+            publishedDate: createdTime,
+            authors: authors.split(","),
+            tags: tags ? tags.split(",") : [],
+            projectKey: projectKey,
+          });
+        return o;
+      }, []);
+      
+      const myObj = object.reduce((o, e) => {
+        o[e.projectKey] = e;
+        return o;
+      }, {});
+      objAr.forEach((e, i) => {
+        if (myObj[e.projectKey]) {
+          objAr[i] = myObj[e.projectKey]
+        }
+      });
+      return objAr;
+    }
+    
+    google.charts.load('current', {'packages':['table']});
+    
+    const check = document.getElementById('allcheck');
+    
+    check.addEventListener('click', function() {
+      const allcheck = document.getElementById("allcheck").checked;
+      for (let i = 1; i <= 4; i++) {
+        document.getElementById("check" + i).checked = allcheck;
+      }
+    })
+    
+    function search(e) {
+      const searchProps = [...e.props].reduce((ar, e) => {
+        if (e.checked) ar.push(e.value);
+        return ar;
+      }, []);
+      const searchTexts = e.searchtext.value.split(/,| /g).reduce((ar, e) => {
+        if (e) ar.push(e.trim());
+        return ar;
+      }, []);
+      const res = searchLibraries({searchValues: searchTexts, searchProperties: searchProps});
+      res.sort((a, b) => a.libraryName.toLowerCase() < b.libraryName.toLowerCase() ? -1 : 1);
+      const values = res.map(({libraryName, authors, publishedDate, siteUrl, projectKey, description}) =>
+        [libraryName, authors.join(","), (publishedDate ? new Date(publishedDate * 1000) : null), (siteUrl ? '<a href="' + siteUrl + '" target="_blank">link</a>' : ""), projectKey, description]
+      );
+      google.charts.setOnLoadCallback(() => {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Library name');
+        data.addColumn('string', 'Author');
+        data.addColumn('date', 'Published date');
+        data.addColumn('string', 'Url');
+        data.addColumn('string', 'Project key');
+        data.addColumn('string', 'Description');
+        data.addRows(values);
+        var table = new google.visualization.Table(document.getElementById('result'));
+        table.draw(data, {allowHtml: true, showRowNumber: true, width: '100%'});
+      });
+    }
+    
+    function searchLibraries(searchObj) {
+      if (searchObj.searchProperties.length == 4) delete searchObj.searchProperties;
+      const res = data.filter(e => {
+        return Object.keys(e).some(f => {
+          const searchProp = searchObj.searchProperties;
+          if ("searchProperties" in searchObj && searchProp.length > 0) {
+            if (searchProp.includes(f)) {
+              return searchEachProp(e[f], searchObj);
+            }
+          } else if (!("searchProperties" in searchObj) || searchProp.length == 0) {
+            return searchEachProp(e[f], searchObj);
+          }
+          return false;
+        })
+      });
+      return res;
+    }
+    
+    function searchEachProp(e, searchObj) {
+      const temp = (Array.isArray(e) ? e.join(" ") : (e ? e.toString() : "")).toUpperCase();
+      return searchObj.searchValues.every(g => {
+        g = g.toUpperCase();
+        return g[0] == "-" ? !temp.includes(g.slice(1)) : temp.includes(g);
+      });
+    }
+  </script>
+</body>
+</html>

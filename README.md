@@ -25,6 +25,8 @@ When this became one of materials for leading the direction for achieving the Go
 
   - I thought that when GitHub repository is used as the database and the GAS libraries are searched by HTML and Javascript, it might be useful.
 
+  - When you can add new GAS libraries to this database, please add them using [this Google Form](https://docs.google.com/forms/d/e/1FAIpQLSckRzFtF-i1CUwdhA21GteWok9p5-_G4Py3PH5bC9KaqXoOxA/viewform) by Andrew Roberts.
+
 # Future developments
 
 - In the current stage, a file including JSON objects of GAS libraries is put in this repository. The GAS library is searched using this file as the database. When the structure of JSON object for GAS library and the format of the file are decided, I would like to increase the number of data.
@@ -48,8 +50,12 @@ If you have any questions and commissions for me, feel free to tell me.
 
 # Update History
 
-- v1.0.0 (February 17, 2020)
+- v1.0.0b (February 17, 2020)
 
   1. Initial release as a sample.
+
+- v1.0.0 (March 12, 2020)
+
+  1. An application for searching GAS libraries from the database was completed. By this, [the script is published](https://github.com/tanaikech/Google-Apps-Script-Library-Database/blob/master/searchApp.html).
 
 [TOP](#top)
