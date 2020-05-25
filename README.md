@@ -58,4 +58,8 @@ If you have any questions and commissions for me, feel free to tell me.
 
   1. An application for searching GAS libraries from the database was completed. By this, [the script is published](https://github.com/tanaikech/Google-Apps-Script-Library-Database/blob/master/searchApp.html).
 
+- v1.0.1 (May 26, 2020)
+
+  1. Added the duplicate checker.
+
 [TOP](#top)
