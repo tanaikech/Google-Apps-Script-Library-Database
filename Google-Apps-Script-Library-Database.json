@@ -5,7 +5,7 @@
     "siteUrl": "https://github.com/tanaikech/BatchRequest",
     "publishedDate": 1525243965,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -21,7 +21,7 @@
     "siteUrl": "https://github.com/tanaikech/FilesApp",
     "publishedDate": 1529025576,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -38,7 +38,7 @@
     "siteUrl": "https://github.com/tanaikech/ImgApp",
     "publishedDate": 1498547968,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -55,7 +55,7 @@
     "siteUrl": "https://github.com/tanaikech/ManifestsApp",
     "publishedDate": 1510191360,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -72,7 +72,7 @@
     "siteUrl": "https://github.com/tanaikech/ProjectApp",
     "publishedDate": 1510107186,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -88,7 +88,7 @@
     "siteUrl": "https://github.com/tanaikech/ProjectApp2",
     "publishedDate": 1517194196,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -104,7 +104,7 @@
     "siteUrl": "https://github.com/tanaikech/OnedriveApp",
     "publishedDate": 1502846660,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -121,7 +121,7 @@
     "siteUrl": "https://github.com/tanaikech/RunAll",
     "publishedDate": 1524526481,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -139,7 +139,7 @@
     "siteUrl": "https://github.com/tanaikech/SOUWA_GAS",
     "publishedDate": 1476404481,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -156,7 +156,7 @@
     "siteUrl": "https://github.com/tanaikech/ZipFolder",
     "publishedDate": 1510469353,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -172,7 +172,7 @@
     "siteUrl": "https://github.com/tanaikech/RangeListApp",
     "publishedDate": 1532667376,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -190,7 +190,7 @@
     "siteUrl": "https://github.com/tanaikech/DownloadLargeFilesByUrl",
     "publishedDate": 1535853811,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -207,7 +207,7 @@
     "siteUrl": "https://github.com/tanaikech/ArrangeStackingOrder",
     "publishedDate": 1539129475,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -224,7 +224,7 @@
     "siteUrl": "https://github.com/tanaikech/ProcessApp",
     "publishedDate": 1549696239,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -240,7 +240,7 @@
     "siteUrl": "https://github.com/tanaikech/GistChecker",
     "publishedDate": 1554081939,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -259,7 +259,7 @@
     "siteUrl": "https://github.com/tanaikech/FetchApp",
     "publishedDate": 1555725685,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -277,7 +277,7 @@
     "siteUrl": "https://github.com/tanaikech/GetEditType",
     "publishedDate": 1560151001,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -296,7 +296,7 @@
     "siteUrl": "https://github.com/tanaikech/UnzipGs",
     "publishedDate": 1564115943,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -312,7 +312,7 @@
     "siteUrl": "https://github.com/tanaikech/GmailToList",
     "publishedDate": 1576479482,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -330,7 +330,7 @@
     "siteUrl": "https://github.com/tanaikech/EncodeApp",
     "publishedDate": 1579851888,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -348,7 +348,7 @@
     "siteUrl": "https://github.com/tanaikech/DateFinder",
     "publishedDate": 1580358901,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -362,11 +362,11 @@
   },
   {
     "libraryName": "RichTextApp",
-    "description": "This is a GAS library for copying the rich text with the text styles from Google Document to Google Spreadsheet or from Google Spreadsheet to Google Document using Google Apps Script (GAS).",
+    "description": "This is a GAS library for copying the rich text with the text styles from Google Document to Google Spreadsheet or from Google Spreadsheet to Google Document using Google Apps Script (GAS). And, also the rich texts in the cells can be converted to HTML format.",
     "siteUrl": "https://github.com/tanaikech/RichTextApp",
     "publishedDate": 1582088425,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -374,7 +374,8 @@
       "gas-library",
       "developer-tools",
       "google-spreadsheet",
-      "rich-text"
+      "rich-text",
+      "html"
     ],
     "projectKey": "1Ka6RcIG6G9P8AhkJtjy1DAnHk1_rShFPWtdCQ2bxwMsrRE8cfn0cDXBv"
   },
@@ -384,7 +385,7 @@
     "siteUrl": "https://github.com/tanaikech/GPhotoApp",
     "publishedDate": 1582676588,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -402,7 +403,7 @@
     "siteUrl": "https://github.com/tanaikech/CopyFolder",
     "publishedDate": 1590447021,
     "authors": [
-      "tanaikech"
+      "tanaike"
     ],
     "tags": [
       "google-apps-script",
@@ -412,5 +413,22 @@
       "copy-files"
     ],
     "projectKey": "1LV7u9yCHVQFRvgDvbkWNZIgU5Ysjzdez7a508Nom0E4f5xzkM0AURH6Y"
+  },
+  {
+    "libraryName": "OwnershipTransfer",
+    "description": "This is a Google Apps Script library for achieving the ownership-transfer of the specific folder including the files and sub-folders using Drive API.",
+    "siteUrl": "https://github.com/tanaikech/OwnershipTransfer",
+    "publishedDate": 1594615029,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "developer-tools",
+      "google-drive"
+    ],
+    "projectKey": "1khX5L_Q0GV8uh2r8-0dj4SA-K3ONOic_lciQrxIE8qVKjRUfpctB15jz"
   }
 ]
