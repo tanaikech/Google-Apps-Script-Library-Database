@@ -430,5 +430,22 @@
       "google-drive"
     ],
     "projectKey": "1khX5L_Q0GV8uh2r8-0dj4SA-K3ONOic_lciQrxIE8qVKjRUfpctB15jz"
+  },
+  {
+    "libraryName": "GASProjectApp",
+    "description": "This is a Google Apps Script library for creating, updating and exporting Google Apps Script project of the standalone type using Drive API. In this case, Apps Script API is not used.",
+    "siteUrl": "https://github.com/tanaikech/GASProjectApp",
+    "publishedDate": 1596179920,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "developer-tools",
+      "google-drive-api"
+    ],
+    "projectKey": "1to51j1yqDvtTrJIoHzgOffCnZOK9MTCcSkky6niwRJlTLTNpxIfj3bI-"
   }
 ]
