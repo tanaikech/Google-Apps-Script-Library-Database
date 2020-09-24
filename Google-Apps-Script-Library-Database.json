@@ -447,5 +447,24 @@
       "google-drive-api"
     ],
     "projectKey": "1to51j1yqDvtTrJIoHzgOffCnZOK9MTCcSkky6niwRJlTLTNpxIfj3bI-"
+  },
+  {
+    "libraryName": "DocsServiceApp",
+    "description": "This is a Google Apps Script library for supporting Document service, Docs API, Spreadsheet service, Sheets API, Slides service and Slides API. The aim of this library is to compensate the processes that they services cannot achieve.",
+    "siteUrl": "https://github.com/tanaikech/DocsServiceApp",
+    "publishedDate": 1600925711,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "library",
+      "developer-tools",
+      "google-spreadsheet",
+      "google-docs",
+      "google-slides"
+    ],
+    "projectKey": "108j6x_ZX544wEhGkgddFYM6Ie09edDqXaFwnW3RVFQCLHw_mEueqUHTW"
   }
 ]
