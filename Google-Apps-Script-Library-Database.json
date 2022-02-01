@@ -11,7 +11,8 @@
       "google-apps-script",
       "library",
       "gas-library",
-      "developer-tools"
+      "developer-tools",
+      "batch-request"
     ],
     "projectKey": "1HLv6tWz0oXFOJHerBTP8HsNmhpRqssijJatC92bv9Ym6HSN69_UuzcDk"
   },
@@ -466,5 +467,22 @@
       "google-slides"
     ],
     "projectKey": "108j6x_ZX544wEhGkgddFYM6Ie09edDqXaFwnW3RVFQCLHw_mEueqUHTW"
+  },
+  {
+    "libraryName": "HtmlFormApp",
+    "description": "This is a Google Apps Script library for parsing the form object from HTML form and appending the submitted values to the Spreadsheet.",
+    "siteUrl": "https://github.com/tanaikech/HtmlFormApp",
+    "publishedDate": 1643689889,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "html-forms",
+      "gas",
+      "gas-library",
+      "google-spreadsheet"
+    ],
+    "projectKey": "1uLJrVXGaI-ceHFl_VC1U5jcynKpR2qnNG2tNPd03QJZw1jCcKw2_Oiwh"
   }
 ]
