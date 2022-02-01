@@ -62,4 +62,8 @@ If you have any questions and commissions for me, feel free to tell me.
 
   1. Added the duplicate checker.
 
+- v1.0.2 (February 1, 2022)
+
+	1. I noticed that the sheet ID of sheet of Andrew Roberts had been changed. So I used the sheet name of "Libraries" instead of the sheet ID.
+
 [TOP](#top)
