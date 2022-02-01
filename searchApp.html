@@ -7,6 +7,7 @@ This is a web application for searching Google Apps Script Libraries. This can b
 
 20200312: v1.0.0 - Initial release.
 20200526: v1.0.1 - Added the duplicate checker.
+20220201: v1.0.2 - I noticed that the sheet ID of sheet of Andrew Roberts had been changed. So I used the sheet name of "Libraries" instead of the sheet ID.
 -->
   
   <base target="_top">
@@ -40,7 +41,7 @@ This is a web application for searching Google Apps Script Libraries. This can b
   <script>
     let data;
     const databaseUrls1 = "https://raw.githubusercontent.com/tanaikech/Google-Apps-Script-Library-Database/master/Google-Apps-Script-Library-Database.json";
-    const databaseUrls2 = "https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/gviz/tq?tqx=out:csv&gid=1640515458";
+    const databaseUrls2 = "https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/gviz/tq?tqx=out:csv&sheet=Libraries";
     
     Promise.resolve()
       .then(() => {
