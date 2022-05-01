@@ -484,5 +484,16 @@
       "google-spreadsheet"
     ],
     "projectKey": "1uLJrVXGaI-ceHFl_VC1U5jcynKpR2qnNG2tNPd03QJZw1jCcKw2_Oiwh"
+  },
+  {
+    "libraryName": "DocNamedRangeApp",
+    "description": "This is a Google Apps Script library for managing the named range on Google Documents.",
+    "siteUrl": "https://github.com/tanaikech/DocNamedRangeApp",
+    "publishedDate": 1651364151,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [],
+    "projectKey": "1ONPDqUOiyJ2RomfPOg69OC5o9yr_F6yT5lU-_oZiT2-pzaKGD_ObGIsl"
   }
 ]
