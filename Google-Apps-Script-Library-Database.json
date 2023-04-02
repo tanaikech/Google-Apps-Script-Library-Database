@@ -495,5 +495,21 @@
     ],
     "tags": [],
     "projectKey": "1ONPDqUOiyJ2RomfPOg69OC5o9yr_F6yT5lU-_oZiT2-pzaKGD_ObGIsl"
+  },
+  {
+    "libraryName": "RichTextAssistant",
+    "description": "This is a GAS library for supporting editing RichText in Google Spreadsheet using Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/RichTextAssistant",
+    "publishedDate": 1680405409,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas-library",
+      "google-apps-script",
+      "google-sheets",
+      "richtext"
+    ],
+    "projectKey": "1U7E6L1c9UuZEvkO0gMVynaQskw9WUnBOcEhI5V-ojsA3ESqA0fl93dJm"
   }
 ]
