@@ -508,8 +508,26 @@
       "gas-library",
       "google-apps-script",
       "google-sheets",
-      "richtext"
+      "richtext",
+      "google-spreadsheet"
     ],
     "projectKey": "1U7E6L1c9UuZEvkO0gMVynaQskw9WUnBOcEhI5V-ojsA3ESqA0fl93dJm"
+  },
+  {
+    "libraryName": "UtlApp",
+    "description": "This is a Google Apps Script library including useful scripts for supporting to development of applications by Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/UtlApp",
+    "publishedDate": 1683960352,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "developer-tool",
+      "google-apps-script",
+      "google-apps-script-library",
+      "javascript",
+      "library"
+    ],
+    "projectKey": "1idMI9-WtPMbYvbK5D7KH2_GWh62Dny9RG8NzjwjHI5whGIAPXEtTJmeC"
   }
 ]
