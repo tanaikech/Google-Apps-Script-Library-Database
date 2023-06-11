@@ -529,5 +529,25 @@
       "library"
     ],
     "projectKey": "1idMI9-WtPMbYvbK5D7KH2_GWh62Dny9RG8NzjwjHI5whGIAPXEtTJmeC"
+  },
+  {
+    "libraryName": "TemplateApp",
+    "description": "This is a Google Apps Script library for easily managing the template of Google Documents and Google Slides using Google Spreadsheet as a database using Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/TemplateApp",
+    "publishedDate": 1686469049,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "developer-tools",
+      "gas-library",
+      "google-apps-script",
+      "google-slides",
+      "google-spreadsheet",
+      "library",
+      "templates",
+      "google-documents"
+    ],
+    "projectKey": "1DbOiAxK9Kwndl-5848xLP91xhUzTidfXkBOxBpWG2uw8fxdvf0Vt3sk4"
   }
 ]
