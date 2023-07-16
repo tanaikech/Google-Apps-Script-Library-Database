@@ -549,5 +549,21 @@
       "google-documents"
     ],
     "projectKey": "1DbOiAxK9Kwndl-5848xLP91xhUzTidfXkBOxBpWG2uw8fxdvf0Vt3sk4"
+  },
+  {
+    "libraryName": "TriggerApp",
+    "description": "This is a Google Apps Script library for efficiently managing the time-driven triggers for executing Google Apps Script using Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/TriggerApp",
+    "publishedDate": 1689467990,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "developer-tools",
+      "google-apps-script",
+      "time-management",
+      "trigger"
+    ],
+    "projectKey": "1LihDPPHWBCcadYVBI3oZ4vOt7XqlowoHyBLdaDgRIx_5OpRBREA7Z1QB"
   }
 ]
