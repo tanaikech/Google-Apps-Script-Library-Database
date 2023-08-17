@@ -565,5 +565,28 @@
       "trigger"
     ],
     "projectKey": "1LihDPPHWBCcadYVBI3oZ4vOt7XqlowoHyBLdaDgRIx_5OpRBREA7Z1QB"
+  },
+  {
+    "libraryName": "PDFApp",
+    "description": "This is a Google Apps Script library for managing PDFs.",
+    "siteUrl": "https://github.com/tanaikech/PDFApp",
+    "publishedDate": 1692250697,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas",
+      "gas-library",
+      "google-apps-script",
+      "google-apps-script-library",
+      "googleappsscript",
+      "library",
+      "pdf",
+      "pdf-forms",
+      "pdf-generation",
+      "pdf-management",
+      "pdf-manager"
+    ],
+    "projectKey": "1Xmtr5XXEakVql7N6FqwdCNdpdijsJOxgqH173JSB0UOwdb0GJYJbnJLk"
   }
 ]
