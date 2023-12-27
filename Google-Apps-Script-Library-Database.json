@@ -588,5 +588,41 @@
       "pdf-manager"
     ],
     "projectKey": "1Xmtr5XXEakVql7N6FqwdCNdpdijsJOxgqH173JSB0UOwdb0GJYJbnJLk"
+  },
+  {
+    "libraryName": "ScriptHistoryApp",
+    "description": "This is a Google Apps Script library for managing the histories of the Google Apps Script project.",
+    "siteUrl": "https://github.com/tanaikech/ScriptHistoryApp",
+    "publishedDate": 1696470390,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "google-apps-script-library",
+      "history",
+      "history-management",
+      "library",
+      "revisions"
+    ],
+    "projectKey": "1s4_fkukUBz2lmxi3hlpjTqrJ-KVpVa_v9kV3qxUvymFiGtF66qUX5yFt"
+  },
+  {
+    "libraryName": "MicrosoftDocsApp",
+    "description": "This is a Google Apps Script library for using Microsoft Docs files (Word, Excel, and PowerPoint files) using Document service, Spreadsheet service, and Slides Service of Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/MicrosoftDocsApp",
+    "publishedDate": 1703637741,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "google-apps-script",
+      "gas-library",
+      "google-apps-script-library",
+      "google-docs",
+      "library",
+      "microsoft-docs"
+    ],
+    "projectKey": "1B0eoHz03BVtSZhJAocaGNq94RjoXocz8xGMaLzwVdmAvYW5k8s5Yd360"
   }
 ]
