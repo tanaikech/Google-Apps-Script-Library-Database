@@ -624,5 +624,23 @@
       "microsoft-docs"
     ],
     "projectKey": "1B0eoHz03BVtSZhJAocaGNq94RjoXocz8xGMaLzwVdmAvYW5k8s5Yd360"
+  },
+  {
+    "libraryName": "CorporaApp",
+    "description": "This is a Google Apps Script library for managing the corpora of Gemini API.",
+    "siteUrl": "https://github.com/tanaikech/CorporaApp",
+    "publishedDate": 1707293058,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "corpora",
+      "gemini",
+      "gemini-api",
+      "google-apps-script",
+      "google-apps-script-library",
+      "semantic-search"
+    ],
+    "projectKey": "1XrAybct1KUwGcFrEZ9BOd5sa0SoHeQwGhOWkDOHki9lDFAX9OHlO03y_"
   }
 ]
