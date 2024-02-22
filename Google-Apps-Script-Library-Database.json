@@ -642,5 +642,23 @@
       "semantic-search"
     ],
     "projectKey": "1XrAybct1KUwGcFrEZ9BOd5sa0SoHeQwGhOWkDOHki9lDFAX9OHlO03y_"
+  },
+  {
+    "libraryName": "ImageBotApp",
+    "description": "This is the image bot using Gemini with Google Apps Script and Google Drive.",
+    "siteUrl": "https://github.com/tanaikech/ImageBotApp",
+    "publishedDate": 1708571375,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gemini",
+      "gemini-api",
+      "gemini-pro",
+      "generative-ai",
+      "google-apps-script",
+      "image-bot"
+    ],
+    "projectKey": "1qdq-ey6H3-HkG0AF4Tp4ZVEAUx-YryHXB5ZPW7oE-BeXN-wH2-b1PT_Q"
   }
 ]
