@@ -660,5 +660,23 @@
       "image-bot"
     ],
     "projectKey": "1qdq-ey6H3-HkG0AF4Tp4ZVEAUx-YryHXB5ZPW7oE-BeXN-wH2-b1PT_Q"
+  },
+  {
+    "libraryName": "GoogleApiApp",
+    "description": "This is a Google Apps Script library for supporting to use Google APIs with Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/GoogleApiApp",
+    "publishedDate": 1710392955,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas-library",
+      "google-api",
+      "google-apis",
+      "google-apps-script",
+      "google-apps-script-library",
+      "library"
+    ],
+    "projectKey": "1YVWd5qzz0quKljrJkliE143UwwJq1BopoZQSwNEqwNgHOPQ9VeaQeNS7"
   }
 ]
