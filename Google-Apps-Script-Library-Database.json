@@ -678,5 +678,23 @@
       "library"
     ],
     "projectKey": "1YVWd5qzz0quKljrJkliE143UwwJq1BopoZQSwNEqwNgHOPQ9VeaQeNS7"
+  },
+  {
+    "libraryName": "GeminiWithFiles",
+    "description": "This is a Google Apps Script library for Gemini API with files.",
+    "siteUrl": "https://github.com/tanaikech/GeminiWithFiles",
+    "publishedDate": 1714111824,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas-library",
+      "gemini",
+      "gemini-api",
+      "generative-ai",
+      "google-apps-script",
+      "google-apps-script-library"
+    ],
+    "projectKey": "1dolXnIeXKz-BH1BlwRDaKhzC2smJcGyVxMxGYhaY2kqiLa857odLXrIC"
   }
 ]
