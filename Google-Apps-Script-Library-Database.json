@@ -696,5 +696,23 @@
       "google-apps-script-library"
     ],
     "projectKey": "1dolXnIeXKz-BH1BlwRDaKhzC2smJcGyVxMxGYhaY2kqiLa857odLXrIC"
+  },
+  {
+    "libraryName": "MoveFolder",
+    "description": "This is a Google Apps Script library for moving a folder including files and folders on Google Drive.",
+    "siteUrl": "https://github.com/tanaikech/MoveFolder",
+    "publishedDate": 1717641525,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "file-management",
+      "gas-library",
+      "google-apps-script",
+      "google-apps-script-library",
+      "google-drive",
+      "google-drive-api"
+    ],
+    "projectKey": "1UEyIfxDTat6GYRFy5iJ3UGj2QpyVuuQI5i-BsOcHDMr8HadIWailwj4k"
   }
 ]
