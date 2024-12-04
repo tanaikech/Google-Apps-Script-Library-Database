@@ -714,5 +714,22 @@
       "google-drive-api"
     ],
     "projectKey": "1UEyIfxDTat6GYRFy5iJ3UGj2QpyVuuQI5i-BsOcHDMr8HadIWailwj4k"
+  },
+  {
+    "libraryName": "MimeTypeApp",
+    "description": "This is a Google Apps Script library for converting files from various MIME types to a specified target MIME type. The library accepts both file IDs and blobs as input values.",
+    "siteUrl": "https://github.com/tanaikech/MimeTypeApp",
+    "publishedDate": 1733291265,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "conversion",
+      "gas-library",
+      "google-apps-script",
+      "google-apps-script-library",
+      "mimetype"
+    ],
+    "projectKey": "112yLH6obJWYpE8RY89DTF7CLp-SEZ2tnA3pesP5Lubq-qmujLkQJao5-"
   }
 ]
