@@ -50,20 +50,29 @@ If you have any questions and commissions for me, feel free to tell me.
 
 # Update History
 
-- v1.0.0b (February 17, 2020)
+- v1.1.0 (May 4, 2025)
 
-  1. Initial release as a sample.
+  1. Major UI/UX enhancement:
+     - Responsive design for better mobile experience
+     - Modern UI with Google Material Design inspired styling
+     - Improved accessibility with ARIA labels and semantic HTML
+     - Better error handling and loading states
+     - Updated dependencies to latest versions
 
-- v1.0.0 (March 12, 2020)
+- v1.0.2 (February 1, 2022)
 
-  1. An application for searching GAS libraries from the database was completed. By this, [the script is published](https://github.com/tanaikech/Google-Apps-Script-Library-Database/blob/master/searchApp.html).
+  1. I noticed that the sheet ID of sheet of Andrew Roberts had been changed. So I used the sheet name of "Libraries" instead of the sheet ID.
 
 - v1.0.1 (May 26, 2020)
 
   1. Added the duplicate checker.
 
-- v1.0.2 (February 1, 2022)
+- v1.0.0 (March 12, 2020)
 
-	1. I noticed that the sheet ID of sheet of Andrew Roberts had been changed. So I used the sheet name of "Libraries" instead of the sheet ID.
+  1. An application for searching GAS libraries from the database was completed. By this, [the script is published](https://github.com/tanaikech/Google-Apps-Script-Library-Database/blob/master/searchApp.html).
+
+- v1.0.0b (February 17, 2020)
+
+  1. Initial release as a sample.
 
 [TOP](#top)
