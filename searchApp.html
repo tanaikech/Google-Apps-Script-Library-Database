@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +7,8 @@ This is a web application for searching Google Apps Script Libraries. This can b
 20200312: v1.0.0 - Initial release.
 20200526: v1.0.1 - Added the duplicate checker.
 20220201: v1.0.2 - I noticed that the sheet ID of sheet of Andrew Roberts had been changed. So I used the sheet name of "Libraries" instead of the sheet ID.
+20250508: v1.1.0 Updated by dryserage. https://github.com/tanaikech/Google-Apps-Script-Library-Database/pull/3
+20250509: v1.1.1 Modified.
 -->
   
   <base target="_top">
@@ -262,6 +263,7 @@ This is a web application for searching Google Apps Script Libraries. This can b
         document.getElementById('items').innerHTML = "(Now " + data.length + " libraries in Database)";
         document.getElementById('gosearch').value = "search";
         document.getElementById('gosearch').disabled = false;
+        showLoading(false);
       })
       .catch(err => console.log(err));
     

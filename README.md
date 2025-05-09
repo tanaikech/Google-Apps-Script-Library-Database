@@ -50,6 +50,9 @@ If you have any questions and commissions for me, feel free to tell me.
 
 # Update History
 
+- v1.1.1 (May 9, 2025)
+  Modified.
+
 - v1.1.0 (May 4, 2025)
 
   1. Major UI/UX enhancement:
