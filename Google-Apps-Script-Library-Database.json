@@ -750,5 +750,25 @@
       "model-context-protocol-server"
     ],
     "projectKey": "1TlX_L9COAriBlAYvrMLiRFQ5WVf1n0jChB6zHamq2TNwuSbVlI5sBUzh"
+  },
+  {
+    "libraryName": "A2AApp",
+    "description": "This is a library for implementing an Agent2Agent (A2A) server using Google Apps Script. This enables AI agent communication and secure service access for AI-powered workflows.",
+    "siteUrl": "https://github.com/tanaikech/A2AApp",
+    "publishedDate": 1747294359,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "a2a",
+      "a2a-protocol",
+      "agent2agent",
+      "gas-library",
+      "gemini",
+      "gemini-api",
+      "google-apps-script",
+      "google-apps-script-library"
+    ],
+    "projectKey": "1OuHIiA5Ge0MG_SpKdv1JLz8ZS3ouqhvrF5J6gRRr6xFiFPHxkRsgjMI6"
   }
 ]
