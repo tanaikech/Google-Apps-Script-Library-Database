@@ -770,5 +770,24 @@
       "google-apps-script-library"
     ],
     "projectKey": "1OuHIiA5Ge0MG_SpKdv1JLz8ZS3ouqhvrF5J6gRRr6xFiFPHxkRsgjMI6"
+  },
+  {
+    "libraryName": "ToolsForMCPServer",
+    "description": "The Gemini CLI integrates with a Google Apps Script Web App acting as an MCP server, simplifying Google Workspace API authorization. This enables Gemini to automate complex tasks within Google's ecosystem, boosting productivity. Setup instructions and examples are provided.",
+    "siteUrl": "https://github.com/tanaikech/ToolsForMCPServer",
+    "publishedDate": 1751524743,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas-library",
+      "google-apps-script",
+      "google-apps-script-library",
+      "google-workspace",
+      "mcp",
+      "mcp-server",
+      "model-context-protocol"
+    ],
+    "projectKey": "1lnE7UL1jQgPDbTB9yjhiwZM0SaS9MObhzvWUWb_t8FisO6A3bLepvM2j"
   }
 ]
