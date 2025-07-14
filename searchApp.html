@@ -279,7 +279,7 @@ This is a web application for searching Google Apps Script Libraries. This can b
           if (created) {
             if (/^\d{2}\/\d{2}\/\d{4}$/.test(created)) {
               const [day, month, year] = created.split("/");
-              createdTime = new Date(year, month, day, "00", "00", "00").getTime() / 1000;
+              createdTime = new Date(year, month - 1, day, "00", "00", "00").getTime() / 1000;
             } else if (/^\d{10}$/.test(created)) {
               createdTime = Number(created);
             }
