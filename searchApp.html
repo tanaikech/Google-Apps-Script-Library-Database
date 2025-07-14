@@ -289,7 +289,7 @@ This is a web application for searching Google Apps Script Libraries. This can b
             description: description,
             siteUrl: gitHub || moreinf,
             publishedDate: createdTime,
-            authors: authors.split(","),
+            authors: authors ? authors.split(",") : [],
             tags: tags ? tags.split(",") : [],
             projectKey: projectKey,
           });
