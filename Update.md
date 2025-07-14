@@ -1,5 +1,13 @@
 # Update Log
 
+## 2025-07-14: v1.1.2 - Bug Fix
+
+### Fixed
+
+- Fixed TypeError in `fromANDREWROBERTSList` function when processing CSV data with missing author information
+- Added null check for authors field before calling split() method
+- Improved error handling for data from Andrew Roberts' spreadsheet
+
 ## 2025-05-04: v1.1.0 - Major UI/UX Enhancement
 
 ### Added
