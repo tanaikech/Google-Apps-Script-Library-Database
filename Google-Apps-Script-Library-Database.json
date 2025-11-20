@@ -773,7 +773,7 @@
   },
   {
     "libraryName": "ToolsForMCPServer",
-    "description": "The Gemini CLI integrates with a Google Apps Script Web App acting as an MCP server, simplifying Google Workspace API authorization. This enables Gemini to automate complex tasks within Google's ecosystem, boosting productivity. Setup instructions and examples are provided.",
+    "description": "The Gemini CLI confirmed that the MCP server built with Google Apps Script (GAS), a low-code platform, offers immense possibilities. If you've created snippets for GAS, these could be revitalized and/or leveraged in new ways by using them as the MCP server. The Gemini CLI and other MCP clients will be useful in achieving this.",
     "siteUrl": "https://github.com/tanaikech/ToolsForMCPServer",
     "publishedDate": 1751524743,
     "authors": [
@@ -789,5 +789,42 @@
       "model-context-protocol"
     ],
     "projectKey": "1lnE7UL1jQgPDbTB9yjhiwZM0SaS9MObhzvWUWb_t8FisO6A3bLepvM2j"
+  },
+  {
+    "libraryName": "FileSearchApp",
+    "description": "This Google Apps Script library, FileSearchApp, helps us manage the file search stores directly using Google Apps Script.",
+    "siteUrl": "https://github.com/tanaikech/FileSearchApp",
+    "publishedDate": 1763095399,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas-library",
+      "gemini",
+      "gemini-api",
+      "google-apps-script",
+      "google-apps-script-library"
+    ],
+    "projectKey": "1jw-dmGrSOtSi1ksUfTAKHOtjzEesQntyA4pfVI9YvwLBBlbFqpX-4C7i"
+  },
+  {
+    "libraryName": "TableApp",
+    "description": "TableApp is a Google Apps Script library for managing Tables on Google Sheets.",
+    "siteUrl": "https://github.com/tanaikech/TableApp",
+    "publishedDate": 1763603919,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "gas-library",
+      "google-apps-script",
+      "google-apps-script-library",
+      "google-sheets",
+      "google-sheets-api",
+      "google-spreadsheet",
+      "google-workspace",
+      "table"
+    ],
+    "projectKey": "1G4RVvyLtwPjQl6x_p8j3X65-yYVU3w2dMXxHDuzCgorucjs8P3Clv5Qt"
   }
 ]
