@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<!-- 
+
+<!--
+
 This is a web application for searching Google Apps Script Libraries. This can be run with the standalone.
 
 20200312: v1.0.0 - Initial release.
@@ -9,394 +10,503 @@ This is a web application for searching Google Apps Script Libraries. This can b
 20220201: v1.0.2 - I noticed that the sheet ID of sheet of Andrew Roberts had been changed. So I used the sheet name of "Libraries" instead of the sheet ID.
 20250508: v1.1.0 Updated by dryserage. https://github.com/tanaikech/Google-Apps-Script-Library-Database/pull/3
 20250509: v1.1.1 Modified.
+20251124: v1.1.2 Updated.
+
 -->
-  
+
+<head>
   <base target="_top">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Search Google Apps Script Libraries</title>
-  <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Google Apps Script Library Explorer</title>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --primary-color: #4285f4;
-      --hover-color: #3367d6;
-      --text-color: #333;
-      --border-color: #cccccc;
+      --bg-body: #121212;
+      --bg-card: #1e1e1e;
+      --bg-input: #2d2d2d;
+      --border-color: #333333;
+      --primary-color: #bb86fc;
+      --primary-variant: #3700b3;
+      --secondary-color: #03dac6;
+      --text-main: #e0e0e0;
+      --text-muted: #a0a0a0;
+      --hover-row: #2c2c2c;
+      
+      --spacing-md: 16px;
+      --radius-md: 12px;
     }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
     body {
-      font-family: 'Google Sans', Arial, sans-serif;
-      line-height: 1.6;
-      color: var(--text-color);
-      margin: 0;
-      padding: 20px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      margin: 0; padding: 0;
+      min-height: 100vh; font-size: 15px;
     }
 
-    form {
+    /* --- Loading Overlay --- */
+    #loader-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: var(--bg-body);
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      z-index: 2000; transition: opacity 0.4s ease;
+    }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--bg-input); border-top: 3px solid var(--primary-color);
+      border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 1rem;
+    }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+    /* --- Layout --- */
+    .container {
+      max-width: 1400px; margin: 0 auto; padding: var(--spacing-md);
+      opacity: 0; transition: opacity 0.5s ease;
+    }
+    .container.loaded { opacity: 1; }
+
+    header { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border-color); }
+    h1 { margin: 0 0 0.5rem 0; color: var(--primary-color); font-size: 1.5rem; }
+    
+    /* Header Info Block */
+    .meta-info { font-size: 0.9rem; color: var(--text-muted); }
+    .meta-stats { font-weight: 500; color: var(--text-main); margin-bottom: 12px; display: block; }
+    
+    .info-block {
+      margin-top: 8px;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 8px;
-      border: 1px solid var(--border-color);
-      margin: 0 auto;
-      padding: 20px;
-      max-width: 1200px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 0.85rem;
+      line-height: 1.5;
     }
+    .info-block p { margin: 4px 0; }
+    .info-block a { color: var(--secondary-color); text-decoration: none; transition: opacity 0.2s; }
+    .info-block a:hover { text-decoration: underline; opacity: 0.8; }
 
-    .title {
-      font-size: clamp(1.5rem, 3vmin, 2rem);
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+    /* --- Controls Area --- */
+    .controls-card {
+      background: var(--bg-card); padding: 16px;
+      border-radius: var(--radius-md); border: 1px solid var(--border-color);
+      margin-bottom: 20px; position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
-
-    .search-container {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 1rem;
-      flex-wrap: wrap;
-    }
-
     .search-input {
-      flex: 1;
-      min-width: 200px;
-      padding: 8px 12px;
-      border: 1px solid var(--border-color);
-      border-radius: 4px;
-      font-size: 1rem;
+      width: 100%; background: var(--bg-input); border: 1px solid var(--border-color);
+      color: var(--text-main); padding: 12px 16px; font-size: 16px; border-radius: 8px;
+      margin-bottom: 12px;
+    }
+    .search-input:focus { outline: none; border-color: var(--primary-color); }
+
+    .filters-container { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      cursor: pointer; background: var(--bg-input); padding: 6px 14px;
+      border-radius: 20px; border: 1px solid var(--border-color);
+      font-size: 0.85rem; display: flex; align-items: center; user-select: none;
+    }
+    .chip input { display: none; }
+    .chip.checked { background: var(--primary-variant); border-color: var(--primary-color); color: white; }
+
+    /* --- Mobile Sort Dropdown --- */
+    .mobile-sort-container { display: none; margin-bottom: 16px; }
+    .mobile-sort-select {
+      width: 100%; background: var(--bg-input); color: var(--text-main);
+      border: 1px solid var(--border-color); padding: 10px; border-radius: 8px; font-size: 16px;
     }
 
-    .checkbox-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      align-items: center;
-      margin: 1rem 0;
+    /* --- Data Display --- */
+    .status-bar { display: flex; justify-content: space-between; margin-bottom: 8px; color: var(--text-muted); font-size: 0.85rem; }
+    
+    .table-wrapper {
+      width: 100%; overflow-x: auto; background: var(--bg-card);
+      border-radius: var(--radius-md); border: 1px solid var(--border-color);
     }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
+    table { width: 100%; border-collapse: collapse; min-width: 800px; }
+    
+    /* Desktop Table Header */
+    th {
+      text-align: left; padding: 16px; background: #252525; color: var(--text-muted);
+      font-weight: 600; cursor: pointer; white-space: nowrap; position: sticky; top: 0;
     }
+    th:hover { color: var(--text-main); background: #303030; }
+    th.sort-active { color: var(--primary-color); }
+    th.sort-active::after { content: attr(data-icon); margin-left: 5px; }
 
-    .action {
-      background: var(--primary-color);
-      color: white;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: background-color 0.3s;
+    td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); vertical-align: top; }
+    tr:hover td { background-color: var(--hover-row); }
+
+    /* Content Styling */
+    .lib-name { color: var(--primary-color); font-weight: 600; display: block; font-size: 1rem;}
+    .lib-key { 
+      font-family: monospace; background: rgba(255,255,255,0.05); color: #ccc;
+      padding: 4px 8px; border-radius: 4px; font-size: 0.85em; 
+      display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+      word-break: break-all;
     }
+    .tag { display: inline-block; background: #333; color: #aaa; padding: 2px 8px; border-radius: 10px; font-size: 0.75rem; margin: 4px 4px 0 0; }
+    .btn-link { color: var(--secondary-color); text-decoration: none; font-size: 0.9em; }
 
-    .action:hover {
-      background: var(--hover-color);
-    }
-
-    .action:disabled {
-      background: #ccc;
-      cursor: not-allowed;
-    }
-
-    .loading {
-      display: inline-block;
-      position: relative;
-      width: 20px;
-      height: 20px;
-      margin-right: 8px;
-    }
-
-    .loading:after {
-      content: '';
-      display: block;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      border-color: #fff transparent #fff transparent;
-      animation: loading 1.2s linear infinite;
-    }
-
-    @keyframes loading {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #result {
-      margin-top: 2rem;
-      overflow-x: auto;
-    }
-
-    .error-message {
-      color: #d32f2f;
-      background: #ffebee;
-      padding: 1rem;
-      border-radius: 4px;
-      margin: 1rem 0;
-    }
-
-    @media (max-width: 768px) {
-      body {
-        padding: 10px;
+    /* --- RESPONSIVE DESIGN --- */
+    @media (max-width: 900px) {
+      .container { padding: 10px; }
+      thead { display: none; }
+      table, tbody { display: block; width: 100%; }
+      .table-wrapper { background: transparent; border: none; overflow: visible; }
+      
+      tr {
+        display: flex; flex-direction: column;
+        background: var(--bg-card); margin-bottom: 16px; padding: 16px;
+        border-radius: var(--radius-md); border: 1px solid var(--border-color);
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       }
+      
+      td { display: block; padding: 0; border: none; background: transparent !important; margin-bottom: 8px; }
+      
+      td.col-name { order: 1; margin-bottom: 4px; }
+      td.col-name .lib-name { font-size: 1.15rem; }
+      
+      td.col-auth, td.col-date { order: 2; font-size: 0.9rem; color: var(--text-muted); display: inline-block; width: auto; margin-right: 10px; margin-bottom: 12px; }
+      
+      td.col-desc { order: 3; margin-bottom: 12px; line-height: 1.5; }
+      
+      td.col-key { order: 4; border-top: 1px solid #333; padding-top: 12px; margin-top: 4px; }
+      td.col-link { display: none; }
+      
+      .mobile-sort-container { display: block; }
+      .mobile-action-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+    }
 
-      form {
-        padding: 15px;
-      }
-
-      .search-container {
-        flex-direction: column;
-      }
-
-      .checkbox-group {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+      background: #333; color: white; padding: 12px 24px; border-radius: 24px;
+      display: none; font-size: 0.9rem; z-index: 3000; box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     }
   </style>
 </head>
 <body>
-  <form class="form-group" id="form" role="search">
-    <h1 class="title">Search Google Apps Script Libraries <span id="items"></span></h1>
-    <p>Author: <a href="https://tanaikech.github.io/" target="_blank" rel="noopener">Tanaike</a></p>
-    
-    <div class="search-container">
-      <input 
-        type="search" 
-        id="searchtext" 
-        name="searchtext" 
-        class="search-input"
-        placeholder="Search for GAS libraries..."
-        aria-label="Search for Google Apps Script libraries"
-      >
-      <button type="button" id="gosearch" class="action" onclick="search(this.form)" disabled>
-        <span class="loading" id="loading-spinner" style="display: none;"></span>
-        <span id="search-button-text">Loading...</span>
-      </button>
+
+  <!-- Loading Screen -->
+  <div id="loader-overlay">
+    <div class="spinner"></div>
+    <div style="color: var(--text-muted);">Loading Google Apps Script Database...</div>
+  </div>
+
+  <div class="container" id="app-container">
+    <header>
+      <h1>Google Apps Script Library Explorer</h1>
+      <div class="meta-info">
+        <span class="meta-stats"><span id="db-stats">Initializing...</span> libraries indexed.</span>
+        
+        <!-- Inserted Description Block -->
+        <div class="info-block">
+          <p>- The author of Google Apps Script Library Explorer is <a href="https://github.com/tanaikech" target="_blank">Tanaike</a>
+          <p>- In the current stage, the library data is retrieved from 2 databases by <a href="https://github.com/tanaikech/Google-Apps-Script-Library-Database" target="_blank">Tanaike's database</a> and <a href="https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/edit#gid=0" target="_blank">Andrew Roberts</a>.</p>
+          <p>- When the search input is empty, all libraries are shown.</p>
+          <p>- If you want to add new Google Apps Script libraries to this database, please add them using <a href="https://docs.google.com/forms/d/e/1FAIpQLSckRzFtF-i1CUwdhA21GteWok9p5-_G4Py3PH5bC9KaqXoOxA/viewform" target="_blank">this Google Form</a> by Andrew Roberts.</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Search & Filter Area -->
+    <div class="controls-card">
+      <input type="text" id="searchInput" class="search-input" placeholder="Search Google Apps Script libraries..." autocomplete="off">
+      <div class="filters-container">
+        <label class="chip checked" id="chip-all"><input type="checkbox" id="cb-all" checked> All</label>
+        <label class="chip"><input type="checkbox" class="prop-check" value="libraryName"> Name</label>
+        <label class="chip"><input type="checkbox" class="prop-check" value="description"> Description</label>
+        <label class="chip"><input type="checkbox" class="prop-check" value="authors"> Author</label>
+        <label class="chip"><input type="checkbox" class="prop-check" value="tags"> Tags</label>
+      </div>
     </div>
 
-    <div class="checkbox-group" role="group" aria-label="Search filters">
-      <label class="checkbox-label" for="check1">
-        <input type="checkbox" name="props" value="libraryName" id="check1" aria-label="Search in library names">
-        Library name
-      </label>
-      <label class="checkbox-label" for="check2">
-        <input type="checkbox" name="props" value="description" id="check2" aria-label="Search in descriptions">
-        Description
-      </label>
-      <label class="checkbox-label" for="check3">
-        <input type="checkbox" name="props" value="authors" id="check3" aria-label="Search by authors">
-        Authors
-      </label>
-      <label class="checkbox-label" for="check4">
-        <input type="checkbox" name="props" value="tags" id="check4" aria-label="Search by tags">
-        Tags
-      </label>
-      <label class="checkbox-label" for="allcheck">
-        <input type="checkbox" name="propall" value="all" id="allcheck" aria-label="Search in all fields">
-        All
-      </label>
+    <!-- Sort Dropdown (Visible on Mobile/Tablet only) -->
+    <div class="mobile-sort-container">
+      <select id="mobileSort" class="mobile-sort-select">
+        <option value="publishedDate_desc">Sort by: Newest First</option>
+        <option value="publishedDate_asc">Sort by: Oldest First</option>
+        <option value="libraryName_asc">Sort by: Name (A-Z)</option>
+        <option value="authors_asc">Sort by: Author (A-Z)</option>
+      </select>
     </div>
-    <p>- In the current stage, the library data is retrieved from 2 databases by <a href="https://github.com/tanaikech/Google-Apps-Script-Library-Database" target="_blank">Tanaike</a> and <a href="https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/edit#gid=0" target="_blank">Andrew Roberts</a>.</p>
-    <p>- When you push "search" button without the search text, all libraries are shown.</p>
-    <p>- When you can add new GAS libraries to this database, please add them using <a href="https://docs.google.com/forms/d/e/1FAIpQLSckRzFtF-i1CUwdhA21GteWok9p5-_G4Py3PH5bC9KaqXoOxA/viewform">this Google Form</a> by Andrew Roberts.</p>
-  </form>
-  <div id="result"></div>
+
+    <div class="status-bar"><span id="result-count">Found 0 results</span></div>
+
+    <!-- Data Table -->
+    <div class="table-wrapper">
+      <table id="libraryTable">
+        <thead>
+          <tr>
+            <th data-sort="libraryName" class="col-name">Library Name</th>
+            <th data-sort="authors" class="col-auth">Author</th>
+            <th data-sort="publishedDate" class="col-date">Date</th>
+            <th data-sort="siteUrl" class="col-link" style="text-align: center;">Link</th>
+            <th data-sort="projectKey" class="col-key">Project Key</th>
+            <th data-sort="description" class="col-desc">Description / Tags</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div id="toast" class="toast"></div>
+
   <script>
-    let data;
-    const databaseUrls1 = "https://raw.githubusercontent.com/tanaikech/Google-Apps-Script-Library-Database/master/Google-Apps-Script-Library-Database.json";
-    const databaseUrls2 = "https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/gviz/tq?tqx=out:csv&sheet=Libraries";
-    
-    async function fetchData() {
+    const state = { rawData: [], filteredData: [], sortCol: 'publishedDate', sortAsc: false, searchProps: [], isAllChecked: true };
+    const URLs = {
+      json: "https://raw.githubusercontent.com/tanaikech/Google-Apps-Script-Library-Database/master/Google-Apps-Script-Library-Database.json",
+      csv: "https://docs.google.com/spreadsheets/d/1Lk6OClOPA8p94fspQrs8-M-W080tb244U-fWGqvnApk/gviz/tq?tqx=out:csv&sheet=Libraries"
+    };
+
+    async function init() {
       try {
-        showLoading(true);
-        const response = await fetch(databaseUrls1);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        return data;
-      } catch (error) {
-        showError('Failed to fetch library database. Please try again later.');
-        console.error('Error fetching database:', error);
-        throw error;
-      }
-    }
+        const jsonResponse = await fetch(URLs.json);
+        if (!jsonResponse.ok) throw new Error("JSON Fetch failed");
+        const jsonData = await jsonResponse.json();
 
-    function showLoading(show) {
-      const spinner = document.getElementById('loading-spinner');
-      const buttonText = document.getElementById('search-button-text');
-      spinner.style.display = show ? 'inline-block' : 'none';
-      buttonText.textContent = show ? 'Loading...' : 'Search';
-    }
+        let mergedData = jsonData;
 
-    function showError(message) {
-      const errorDiv = document.createElement('div');
-      errorDiv.className = 'error-message';
-      errorDiv.setAttribute('role', 'alert');
-      errorDiv.textContent = message;
-      document.getElementById('result').prepend(errorDiv);
-      setTimeout(() => errorDiv.remove(), 5000);
-    }
-
-    Promise.resolve()
-      .then(() => fetchData())
-      .then(object => {
-        return new Promise((resolve, reject) => {
-          fetch(databaseUrls2)
-          .then(res => res.text())
-          .then(csv => {
-            const dataFromANDREWROBERTSList = fromANDREWROBERTSList(csv, object);
-            if (dataFromANDREWROBERTSList) {
-              resolve(dataFromANDREWROBERTSList);
-              return;
-            }
-            resolve(object);
-          })
-          .catch(err => {
-            console.log(err);
-            resolve(object);
-          });
-        });
-      })
-      .then(object => {
-        data = object;
-        document.getElementById('items').innerHTML = "(Now " + data.length + " libraries in Database)";
-        document.getElementById('gosearch').value = "search";
-        document.getElementById('gosearch').disabled = false;
-        showLoading(false);
-      })
-      .catch(err => console.log(err));
-    
-    function fromANDREWROBERTSList(csv, object) {
-      const parsedCsv = Papa.parse(csv);
-      if (parsedCsv.errors.length > 0) {
-        return null;
-      }
-      const ar = parsedCsv.data;
-      ar.shift();
-      const objAr = ar.reduce((o, [name,description,projectKey,moreinf,,gitHub,created,,,,authors,tags]) => {      
-          let createdTime = "";
-          if (created) {
-            if (/^\d{2}\/\d{2}\/\d{4}$/.test(created)) {
-              const [day, month, year] = created.split("/");
-              createdTime = new Date(year, month, day, "00", "00", "00").getTime() / 1000;
-            } else if (/^\d{10}$/.test(created)) {
-              createdTime = Number(created);
-            }
+        try {
+          const csvResponse = await fetch(URLs.csv);
+          if (csvResponse.ok) {
+            const csvText = await csvResponse.text();
+            const combined = parseAndMerge(csvText, jsonData);
+            if (combined) mergedData = combined;
           }
-          o.push({
-            libraryName: name,
-            description: description,
-            siteUrl: gitHub || moreinf,
-            publishedDate: createdTime,
-            authors: authors.split(","),
-            tags: tags ? tags.split(",") : [],
-            projectKey: projectKey,
-          });
+        } catch (csvError) {
+          console.warn("CSV Database skipped (Network/CORS). Using JSON only.");
+          showToast("Note: Using primary database only.");
+        }
+
+        state.rawData = mergedData;
+        state.filteredData = [...state.rawData];
+        
+        sortData();
+        render();
+        
+        const loader = document.getElementById('loader-overlay');
+        loader.style.opacity = '0';
+        setTimeout(() => loader.remove(), 400);
+        document.getElementById('app-container').classList.add('loaded');
+        document.getElementById('db-stats').textContent = state.rawData.length;
+
+      } catch (err) {
+        console.error(err);
+        showToast("Error: " + err.message);
+        document.getElementById('loader-overlay').style.display = 'none';
+      }
+    }
+
+    function parseAndMerge(csv, object) {
+      const parsedCsv = Papa.parse(csv);
+      if (parsedCsv.errors.length > 0) return null;
+      
+      const ar = parsedCsv.data;
+      ar.shift(); 
+
+      const objAr = ar.reduce((o, [name, desc, projectKey, moreinf, , gitHub, created, , , , authors, tags]) => {
+        if (!projectKey) return o;
+        let createdTime = "";
+        if (created) {
+          if (/^\d{2}\/\d{2}\/\d{4}$/.test(created)) {
+            const [d, m, y] = created.split("/");
+            createdTime = new Date(y, m - 1, d).getTime() / 1000;
+          } else if (/^\d{10}$/.test(created)) {
+            createdTime = Number(created);
+          }
+        }
+        o.push({
+          libraryName: name, description: desc, siteUrl: gitHub || moreinf,
+          publishedDate: createdTime, authors: authors ? authors.split(",") : [],
+          tags: tags ? tags.split(",") : [], projectKey: projectKey,
+        });
         return o;
       }, []);
-      
-      const myObj = object.reduce((o, e) => {
-        o[e.projectKey] = e;
-        return o;
-      }, {});
-      objAr.forEach((e, i) => {
-        if (myObj[e.projectKey]) {
-          objAr[i] = myObj[e.projectKey];
-        }
-      });
-      
-      const obj = objAr.reduce((o, e) => {
-        o[e.projectKey] = e;
-        return o;
-      }, {});
-      object.forEach((e, i) => {
-        if (!obj[e.projectKey]) {
-          objAr.push(e);
-        }
-      });
-      
+
+      const myObj = object.reduce((o, e) => { o[e.projectKey] = e; return o; }, {});
+      objAr.forEach((e, i) => { if (myObj[e.projectKey]) objAr[i] = myObj[e.projectKey]; });
+
+      const csvKeys = objAr.reduce((o, e) => { o[e.projectKey] = e; return o; }, {});
+      object.forEach(e => { if (!csvKeys[e.projectKey]) objAr.push(e); });
+
       return objAr;
     }
-    
-    google.charts.load('current', {'packages':['table']});
-    
-    const check = document.getElementById('allcheck');
-    
-    check.addEventListener('click', function() {
-      const allcheck = document.getElementById("allcheck").checked;
-      for (let i = 1; i <= 4; i++) {
-        document.getElementById("check" + i).checked = allcheck;
-      }
-    })
-    
-    async function search(e) {
-      try {
-        showLoading(true);
-        document.getElementById('result').innerHTML = '';
-        
-        const searchProps = [...e.props].reduce((ar, e) => {
-          if (e.checked) ar.push(e.value);
-          return ar;
-        }, []);
-        
-        const searchTexts = e.searchtext.value.split(/,| /g).reduce((ar, e) => {
-          if (e) ar.push(e.trim());
-          return ar;
-        }, []);
-        
-        const res = searchLibraries({searchValues: searchTexts, searchProperties: searchProps});
-        res.sort((a, b) => a.libraryName.toLowerCase() < b.libraryName.toLowerCase() ? -1 : 1);
-        
-        const values = res.map(({libraryName, authors, publishedDate, siteUrl, projectKey, description}) =>
-          [libraryName, authors.join(","), (publishedDate ? new Date(publishedDate * 1000) : null), (siteUrl ? '<a href="' + siteUrl + '" target="_blank">link</a>' : ""), projectKey, description]
-        );
-        
-        google.charts.setOnLoadCallback(() => {
-          var data = new google.visualization.DataTable();
-          data.addColumn('string', 'Library name');
-          data.addColumn('string', 'Author');
-          data.addColumn('date', 'Published date');
-          data.addColumn('string', 'Url');
-          data.addColumn('string', 'Project key');
-          data.addColumn('string', 'Description');
-          data.addRows(values);
-          var table = new google.visualization.Table(document.getElementById('result'));
-          table.draw(data, {allowHtml: true, showRowNumber: true, width: '100%'});
+
+    function sortData() {
+      const { sortCol, sortAsc, filteredData } = state;
+      
+      filteredData.sort((a, b) => {
+        let va = a[sortCol];
+        let vb = b[sortCol];
+
+        if (va === null || va === undefined) va = "";
+        if (vb === null || vb === undefined) vb = "";
+
+        if (Array.isArray(va)) va = va.join(" ");
+        if (Array.isArray(vb)) vb = vb.join(" ");
+
+        if (sortCol === 'publishedDate') {
+          const na = (va === "") ? 0 : Number(va);
+          const nb = (vb === "") ? 0 : Number(vb);
+          if (!isNaN(na) && !isNaN(nb)) return sortAsc ? na - nb : nb - na;
+        }
+
+        const sa = String(va).toLowerCase();
+        const sb = String(vb).toLowerCase();
+
+        if (sa < sb) return sortAsc ? -1 : 1;
+        if (sa > sb) return sortAsc ? 1 : -1;
+        return 0;
+      });
+
+      updateSortVisuals();
+    }
+
+    function handleSearch() {
+      const q = document.getElementById('searchInput').value.trim().toUpperCase();
+      if (!q) {
+        state.filteredData = [...state.rawData];
+      } else {
+        const terms = q.split(/[\s,]+/).filter(x => x);
+        state.filteredData = state.rawData.filter(item => {
+          const keys = state.isAllChecked ? Object.keys(item) : state.searchProps;
+          return keys.some(k => {
+            if (!item[k]) return false;
+            const val = Array.isArray(item[k]) ? item[k].join(" ") : String(item[k]);
+            const valUp = val.toUpperCase();
+            return terms.every(t => t.startsWith('-') ? !valUp.includes(t.slice(1)) : valUp.includes(t));
+          });
         });
-      } catch (error) {
-        showError('An error occurred while searching. Please try again.');
-        console.error('Search error:', error);
-      } finally {
-        showLoading(false);
+      }
+      sortData();
+      render();
+    }
+
+    function render() {
+      document.getElementById('result-count').textContent = `Found ${state.filteredData.length} libraries`;
+      const tbody = document.getElementById('tableBody');
+      const frag = document.createDocumentFragment();
+
+      if (state.filteredData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:2rem;">No results found.</td></tr>';
+        return;
+      }
+
+      state.filteredData.forEach(item => {
+        const tr = document.createElement('tr');
+        
+        const dateStr = item.publishedDate 
+          ? new Date(item.publishedDate * 1000).toLocaleDateString(undefined, {year:'numeric', month:'short', day:'numeric'}) 
+          : '';
+        
+        const authors = Array.isArray(item.authors) ? item.authors.join(", ") : item.authors;
+        const tagsHtml = (item.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+        
+        const linkElem = item.siteUrl 
+          ? `<a href="${item.siteUrl}" target="_blank" class="btn-link">View</a>` 
+          : `<span style="opacity:0.5">-</span>`;
+        
+        const keyHtml = `
+          <div class="mobile-action-row">
+            <span class="lib-key" onclick="copyKey('${item.projectKey}')" title="Tap to copy">
+              ${item.projectKey}
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </span>
+            <span class="desktop-hidden">${linkElem}</span>
+          </div>`;
+
+        tr.innerHTML = `
+          <td class="col-name"><span class="lib-name">${esc(item.libraryName)}</span></td>
+          <td class="col-auth">By ${esc(authors)}</td>
+          <td class="col-date">${dateStr}</td>
+          <td class="col-link">${linkElem}</td>
+          <td class="col-key">${keyHtml}</td>
+          <td class="col-desc"><div style="margin-bottom:6px;">${esc(item.description)}</div><div>${tagsHtml}</div></td>
+        `;
+        frag.appendChild(tr);
+      });
+      tbody.innerHTML = '';
+      tbody.appendChild(frag);
+    }
+
+    async function copyKey(key) {
+      try { await navigator.clipboard.writeText(key); showToast("Project Key copied!"); }
+      catch(e) { 
+        const ta = document.createElement('textarea'); ta.value = key; document.body.appendChild(ta); 
+        ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showToast("Project Key copied!");
       }
     }
     
-    function searchLibraries(searchObj) {
-      if (searchObj.searchProperties.length == 4) delete searchObj.searchProperties;
-      const res = data.filter(e => {
-        return Object.keys(e).some(f => {
-          const searchProp = searchObj.searchProperties;
-          if ("searchProperties" in searchObj && searchProp.length > 0) {
-            if (searchProp.includes(f)) {
-              return searchEachProp(e[f], searchObj);
-            }
-          } else if (!("searchProperties" in searchObj) || searchProp.length == 0) {
-            return searchEachProp(e[f], searchObj);
-          }
-          return false;
-        })
-      });
-      return res;
+    function showToast(msg) {
+      const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block';
+      setTimeout(() => t.style.display = 'none', 4000);
     }
+    function esc(s) { return s ? s.toString().replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;") : ""; }
     
-    function searchEachProp(e, searchObj) {
-      const temp = (Array.isArray(e) ? e.join(" ") : (e ? e.toString() : "")).toUpperCase();
-      return searchObj.searchValues.every(g => {
-        g = g.toUpperCase();
-        return g[0] == "-" ? !temp.includes(g.slice(1)) : temp.includes(g);
+    function updateSortVisuals() {
+      document.querySelectorAll('th').forEach(th => {
+        th.classList.remove('sort-active'); th.removeAttribute('data-icon');
+        if (th.dataset.sort === state.sortCol) {
+          th.classList.add('sort-active'); th.setAttribute('data-icon', state.sortAsc ? '▲' : '▼');
+        }
       });
     }
+
+    let debounce;
+    document.getElementById('searchInput').addEventListener('input', () => { clearTimeout(debounce); debounce = setTimeout(handleSearch, 300); });
+    
+    const cbAll = document.getElementById('cb-all');
+    const chipAll = document.getElementById('chip-all');
+    const propChecks = document.querySelectorAll('.prop-check');
+    
+    cbAll.addEventListener('change', (e) => {
+      state.isAllChecked = e.target.checked;
+      chipAll.classList.toggle('checked', e.target.checked);
+      if(e.target.checked) {
+        propChecks.forEach(c => { c.checked = false; c.parentElement.classList.remove('checked'); });
+        state.searchProps = [];
+      } else {
+        propChecks[0].checked = true; propChecks[0].parentElement.classList.add('checked');
+        state.searchProps = ['libraryName'];
+      }
+      handleSearch();
+    });
+    
+    propChecks.forEach(c => {
+      c.addEventListener('change', (e) => {
+        e.target.parentElement.classList.toggle('checked', e.target.checked);
+        const active = Array.from(propChecks).filter(x => x.checked);
+        if(active.length) {
+          state.searchProps = active.map(x => x.value); state.isAllChecked = false;
+          cbAll.checked = false; chipAll.classList.remove('checked');
+        } else {
+          state.isAllChecked = true; cbAll.checked = true; chipAll.classList.add('checked'); state.searchProps = [];
+        }
+        handleSearch();
+      });
+    });
+
+    document.querySelectorAll('th[data-sort]').forEach(th => th.addEventListener('click', () => {
+      if(state.sortCol === th.dataset.sort) state.sortAsc = !state.sortAsc;
+      else { state.sortCol = th.dataset.sort; state.sortAsc = true; }
+      sortData(); render();
+    }));
+    
+    document.getElementById('mobileSort').addEventListener('change', (e) => {
+      const [col, dir] = e.target.value.split('_');
+      state.sortCol = col; state.sortAsc = (dir === 'asc');
+      sortData(); render();
+    });
+
+    init();
   </script>
 </body>
 </html>
