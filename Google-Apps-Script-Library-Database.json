@@ -681,7 +681,7 @@
   },
   {
     "libraryName": "GeminiWithFiles",
-    "description": "This is a Google Apps Script library for Gemini API with files.",
+    "description": "A Google Apps Script library to seamlessly integrate the Gemini API for processing files, unstructured data, and building autonomous AI agents.",
     "siteUrl": "https://github.com/tanaikech/GeminiWithFiles",
     "publishedDate": 1714111824,
     "authors": [
@@ -844,5 +844,30 @@
       "google-workspace"
     ],
     "projectKey": "1xRlK6KPhqp374qAyumrtVXXNEtb7iZ_rD7yRuYxccQuYieKCCao9VuB6"
+  },
+  {
+    "libraryName": "adk-gas",
+    "description": "GASADK: An Agent Development Kit for Google Apps Script to build autonomous AI agents with the Gemini API, MCP, A2A, Agent Skills, and sub-agent routing.",
+    "siteUrl": "https://github.com/tanaikech/adk-gas",
+    "publishedDate": 1779088737,
+    "authors": [
+      "tanaike"
+    ],
+    "tags": [
+      "a2a",
+      "adk",
+      "agent-development-kit",
+      "agent-skills",
+      "agent2agent",
+      "agentic-ai",
+      "ai-agents",
+      "gemini-api",
+      "google-apps-script",
+      "google-workspace",
+      "llm",
+      "mcp",
+      "model-context-protocol"
+    ],
+    "projectKey": "1w2mwhWQd4_6rom-UBRPD8gayBoqGH_87awSBVqGI8DdaQI_pOeSuGYDu"
   }
 ]
